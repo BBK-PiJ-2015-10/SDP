@@ -33,6 +33,5 @@ public class AddInstruction extends Instruction {
     @Override
     public String toString() {
     	return super.toString() + " register " + op1 + " to " +"register " + op2 + " store result in register " + result;
-    	//return super.toString() + " " + op1 + " + " + op2 + " to " + result;
     }
 }

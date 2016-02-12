@@ -2,6 +2,7 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -12,9 +13,7 @@ import java.util.Scanner;
 public class Translator {
 
     private static final String PATH = "\\Users\\YasserAlejandro\\SDP\\Ongoing\\SDPOngoing\\src\\sml\\";
-    		
-    //String PATH = "/Users/keith/Courses/sdp/2016/SDP2016/SML/src/";
-    
+      
     // word + line is the part of the current line that's not yet processed
     // word has no whitespace
     // If word and line are not empty, line begins with whitespace
@@ -47,7 +46,7 @@ public class Translator {
 
             // Each iteration processes line and reads the next line into line
             while (line != null) {
-                // Store the label in label
+                
                 String label = scan();
 
                 if (label.length() > 0) {
@@ -75,52 +74,236 @@ public class Translator {
     // line should consist of an MML instruction, with its label already
     // removed. Translate line into an instruction with label label
     // and return the instruction
+    @SuppressWarnings("unchecked")
     public Instruction getInstruction(String label) {
         int s1; // Possible operands of the instruction
         int s2;
         int r;
         int x;
         String relabel;
+        
+        Class c1 = null;
+        Instruction instruction = null;
 
         if (line.equals(""))
             return null;
 
         String ins = scan();
+        
         switch (ins) {
         	case "bnz":
         		r = scanInt();
         		relabel = scanString();
-        		return new BnzInstruction(label, r, relabel);
+        		try {
+        			c1 = Class.forName("sml.BnzInstruction");
+        		}
+        		catch (ClassNotFoundException ex){
+        			ex.printStackTrace();
+        		}
+        		try {
+        			instruction = (Instruction) c1.getConstructor(String.class,int.class,String.class).newInstance(label,r,relabel);
+        		}
+        		catch (NoSuchMethodException | SecurityException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InstantiationException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        		}
+                return instruction;	
+        	
         	case "out":
         		r = scanInt();
-        		return new OutInstruction(label, r);
+        		try {
+        			c1 = Class.forName("sml.OutInstruction");
+        		}
+        		catch (ClassNotFoundException ex){
+        			ex.printStackTrace();
+        		}
+                try {
+                	instruction = (Instruction) c1.getConstructor(String.class,int.class).newInstance(label,r);
+                }
+        		
+        		catch (NoSuchMethodException | SecurityException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InstantiationException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        		}
+                return instruction; 		
+        		
         	case "div":
         		r = scanInt();
         		s1 = scanInt();
         		s2 = scanInt();
-        		return new DivInstruction(label, r, s1, s2);
+        		try {
+        			c1 = Class.forName("sml.DivInstruction");
+        		}
+        		catch (ClassNotFoundException ex){
+        			ex.printStackTrace();
+        		}
+                try {
+                	instruction = (Instruction) c1.getConstructor(String.class,int.class,int.class,int.class).newInstance(label,r,s1,s2);
+        		}
+        		
+        		catch (NoSuchMethodException | SecurityException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InstantiationException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        		}
+                return instruction; 		
+        	
         	case "mul":
         		r = scanInt();
         		s1 = scanInt();
         		s2 = scanInt();
-        		return new MulInstruction(label, r, s1, s2);
+        		try {
+        			c1 = Class.forName("sml.MulInstruction");
+        		}
+        		catch (ClassNotFoundException ex){
+        			ex.printStackTrace();
+        		}
+                try {
+                	instruction = (Instruction) c1.getConstructor(String.class,int.class,int.class,int.class).newInstance(label,r,s1,s2);
+        		}
+        		
+        		catch (NoSuchMethodException | SecurityException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InstantiationException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        		}
+                return instruction;
+        	
         	case "sub":
         		r = scanInt();
             	s1 = scanInt();
-            	s2 = scanInt();
-            	return new SubInstruction(label, r, s1, s2);    
+            	s2 = scanInt();	
+            	try {
+        			c1 = Class.forName("sml.SubInstruction");
+        		}
+        		catch (ClassNotFoundException ex){
+        			ex.printStackTrace();
+        		}
+                try {
+                	instruction = (Instruction) c1.getConstructor(String.class,int.class,int.class,int.class).newInstance(label,r,s1,s2);
+        		}
+        		
+        		catch (NoSuchMethodException | SecurityException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InstantiationException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        		}
+                return instruction;
+            	
         	case "add":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
-                return new AddInstruction(label, r, s1, s2);
-            case "lin":
+                try {
+        			c1 = Class.forName("sml.AddInstruction");
+        		}
+        		catch (ClassNotFoundException ex){
+        			ex.printStackTrace();
+        		}
+                try {
+        			instruction = (Instruction) c1.getConstructor(String.class,int.class,int.class,int.class).newInstance(label,r,s1,s2);
+        		}
+        		
+        		catch (NoSuchMethodException | SecurityException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InstantiationException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        		}
+                return instruction;
+            
+        	case "lin":
                 r = scanInt();
                 s1 = scanInt();
-                return new LinInstruction(label, r, s1);
+                try {
+        			c1 = Class.forName("sml.LinInstruction");
+        		}
+        		catch (ClassNotFoundException ex){
+        			ex.printStackTrace();
+        		}
+                try {
+        			instruction = (Instruction) c1.getConstructor(String.class,int.class,int.class).newInstance(label,r,s1);
+        		}
+        		
+        		catch (NoSuchMethodException | SecurityException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InstantiationException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalAccessException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (IllegalArgumentException e) {
+        				e.printStackTrace();
+        		} 
+        		catch (InvocationTargetException e) {
+        				e.printStackTrace();
+        		}
+                return instruction;
+                
         }
-
-        // You will have to write code here for the other instructions.
 
         return null;
     }

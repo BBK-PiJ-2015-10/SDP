@@ -5,9 +5,7 @@ public class BnzInstruction extends Instruction {
 	private int op1;
 	
 	private String relabel;
-	
-	//private String label;
-	
+		
 	public BnzInstruction(String label, String op) {
 		super(label, op);
 	}
