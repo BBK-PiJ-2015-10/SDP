@@ -13,7 +13,9 @@ object FunctionasObjectsScript extends App {
   for (i <- exer20) {
     result += i + ","
   }
-  println(result)
+  
+  assert(result == "1,2,3,4,")
+  
   
   //Question 21
   
@@ -25,13 +27,15 @@ object FunctionasObjectsScript extends App {
   var s=""
   val v = Vector(1,5,7,8) 
   v.foreach( n => (s += n*7 +" "))
-  println(s)
+  
+  assert(s == "7 35 49 56 ")
   
   //Question 23
   var s2 = ""
   val numbers = Vector(1,2,5,3,7)
   numbers.foreach( n => s2 +=(n*n) +" ")
-  println(s2)
+  
+  assert(s2 == "1 4 25 9 49 ")
   
   //v:+1
   

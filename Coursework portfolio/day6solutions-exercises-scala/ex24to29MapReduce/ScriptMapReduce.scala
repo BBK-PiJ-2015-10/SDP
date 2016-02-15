@@ -5,13 +5,13 @@ object ScriptMapReduce extends App {
   //Question 24
   
   val v = Vector (1,2,3,4)
-  println(v.map( n => n*11 + 10))
-  println(v)
+  assert(v.map( n => n*11 + 10) == Vector(21,32,43,54))
+  
   
   //Questions 25
   
   val v2 = Vector (1,2,3,4)
-  println(v2.foreach( n => n*11 + 10))
+  assert(v2.foreach( n => n*11 + 10) == ())
   
   //*The output is only a ()
   
@@ -20,7 +20,7 @@ object ScriptMapReduce extends App {
   //Question 27
   
   val v3 = Vector(1,2,3,4)
-  println(v3.map(n => n + 1))
+  assert(v3.map(n => n + 1) == Vector(2,3,4,5))
   
  //Question 28
   

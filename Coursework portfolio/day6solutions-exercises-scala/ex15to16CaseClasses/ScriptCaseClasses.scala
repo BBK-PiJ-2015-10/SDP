@@ -11,11 +11,10 @@ object ScriptCaseClasses extends App {
   
   //Question16
   
-  val people = Vector(Person("Jane","Smile","jane@smile.com"),Person("Ron","House","ron@house"),Person("Sally","Dove","sally@dove"))
-  println(people(0))
-  println(people(1))
-  println(people(2))    
+  val people = Vector(Person("Jane","Smile","jane@smile.com"),Person("Ron","House","ron@house.com"),Person("Sally","Dove","sally@dove.com"))
+  assert (people(0) == Person("Jane","Smile","jane@smile.com"))
+  assert (people(1) == Person("Ron","House","ron@house.com"))
+  assert (people(2) == Person("Sally","Dove","sally@dove.com"))
   
- 
   
 }

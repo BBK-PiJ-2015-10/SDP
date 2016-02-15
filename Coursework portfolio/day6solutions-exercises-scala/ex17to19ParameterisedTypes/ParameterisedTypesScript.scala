@@ -12,9 +12,9 @@ object ParameterisedTypesScript extends App {
     Vector (c1,c2,c3)
   }
   
-  println(inferred('a','b','c'))
-  println()
-  println(explicit('a','b','c'))
+  assert(inferred('a','b','c') == Vector('a','b','c'))
+  
+  assert(explicit('a','b','c')== Vector('a','b','c'))
   
   //Answer to question 17
   
@@ -22,7 +22,8 @@ object ParameterisedTypesScript extends App {
     Vector (c1,c2,c3)
   }
   
-  println(explicitDouble(1.0,2.0,3.0))
+  assert(explicitDouble(1.0,2.0,3.0) == Vector(1.0,2.0,3.0))
+  
   
   //Answer to question 18
   
@@ -30,8 +31,8 @@ object ParameterisedTypesScript extends App {
      return c1.toList
   }
   
-  println(explicitList(Vector(10.0,20.0)))
-  println(explicitList(Vector(1,2,3)))
+  assert(explicitList(Vector(10.0,20.0)) == List(10.0,20.0))
+  assert(explicitList(Vector(1,2,3)) == List(1.0,2.0,3.0))
   
   //Answer to question 19
   
@@ -39,10 +40,7 @@ object ParameterisedTypesScript extends App {
     return c1.toSet
   }
   
-  println(explicitSet(Vector(10.0,20.0)))
-  println(explicitSet(Vector(1,2,3,2,3,4)))
-  
-  
-  
-  
+  assert(explicitSet(Vector(10.0,20.0)) == Set(10.0,20.0))
+  assert(explicitSet(Vector(1,2,3,2,3,4)) == Set(1.0,2.0,3.0,4.0))
+    
 }
