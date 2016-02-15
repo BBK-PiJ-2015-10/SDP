@@ -94,9 +94,7 @@ object Answers {
     for (i <- exer18 ){
       sentence19 +=i.reverse +" "      
     }
-    
-    println(sentence19.toString())
-    
+      
     assert(sentence19.toString() == "ehT god detisiv eht esuoherif ")
     
     
@@ -106,8 +104,6 @@ object Answers {
     for (i <- exer18.reverse ){
        sentence20 +=i +" "      
     }
-    
-    println(sentence20.toString())
     
     assert(sentence20.toString() == "firehouse the visited dog The ")
     
@@ -185,21 +181,6 @@ object Answers {
     assert(Forecast.forecast(20) == "Mostly Cloudly")
     assert(Forecast.forecast(0) == "Cloudly")
     assert(Forecast.forecast(15) == "Unknown")
-    
-   
-    
-    val test2 = "Ale"
-    //println(test2.length)
-    
-    //println(test2.head)
-    
-    val test3 = test2.toList
-    
-    println(test3.length)
-    println(test3(2))
-    
-   
-    println(Palindrome.isPalindrome("street"))  
     
     
     //Exercise25
