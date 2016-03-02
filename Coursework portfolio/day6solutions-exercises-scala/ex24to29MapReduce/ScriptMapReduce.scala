@@ -26,14 +26,14 @@ object ScriptMapReduce extends App {
   
  //Question 29
   
-  var sumIt = 0
-  val v4 = Vector(1,2,3)
-  assert(v4.reduce((sumIt,n) => (sumIt +n)) == 6)
   
-  val v5 = Vector(45,45,45,60)
-  assert(v5.reduce((sumIt,n) => (sumIt + n )) == 195)
+  def sumIt(input: Int*) :Int = {
+    input.reduce((sum, n) => sum + n)
+  }
   
-  
+  assert(sumIt(1,2,3) == 6)
+  assert(sumIt(45,45,45,60) == 195 )
+   
   
   //v:+1
   
